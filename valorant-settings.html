@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT Settings Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --valorant-red: #ff4655;
+            --valorant-dark: #0f1923;
+            --valorant-light: #ece8e1;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--valorant-light);
+            background-color: var(--valorant-dark);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-color: rgba(15, 25, 35, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--valorant-red);
+        }
+        
+        h1 {
+            font-family: 'Lilita One', cursive;
+            color: var(--valorant-red);
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--valorant-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #e03a4a;
+            transform: translateY(-2px);
+        }
+        
+        .settings-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: rgba(15, 25, 35, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .section-title {
+            font-family: 'Lilita One', cursive;
+            color: var(--valorant-red);
+            border-left: 4px solid var(--valorant-red);
+            padding-left: 1rem;
+            margin-top: 0;
+        }
+        
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .screenshot-container {
+            border: 2px solid var(--valorant-red);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            display: block;
+        }
+        
+        .settings-desc {
+            padding: 1rem;
+        }
+        
+        .settings-desc h3 {
+            color: var(--valorant-red);
+            margin-top: 0;
+        }
+        
+        .recommended {
+            background-color: rgba(255,70,85,0.1);
+            padding: 1rem;
+            border-left: 3px solid var(--valorant-red);
+            margin: 1rem 0;
+        }
+        
+        .recommended-title {
+            font-weight: bold;
+            color: var(--valorant-red);
+        }
+        
+        /* Stili preset */
+        .preset-container {
+            margin-top: 20px;
+        }
+        
+        .preset-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .preset-card {
+            background: rgba(15, 25, 35, 0.8);
+            border: 2px solid rgba(255, 70, 85, 0.3);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .preset-card:hover {
+            border-color: var(--valorant-red);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 70, 85, 0.2);
+        }
+        
+        .preset-card.active {
+            border-color: var(--valorant-red);
+            background: rgba(255, 70, 85, 0.2);
+            box-shadow: 0 0 0 2px var(--valorant-red);
+        }
+        
+        .preset-card h4 {
+            color: var(--valorant-red);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .preset-card p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        
+        /* Stili crosshair */
+        .crosshair-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .crosshair-card {
+            background: rgba(15, 25, 35, 0.7);
+            border: 1px solid rgba(255, 70, 85, 0.3);
+            border-radius: 4px;
+            padding: 14px 10px;
+            color: var(--valorant-light);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .crosshair-card:hover {
+            background: rgba(255, 70, 85, 0.15);
+            border-color: var(--valorant-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 70, 85, 0.2);
+        }
+        
+        .player-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--valorant-red);
+        }
+        
+        .code-hint {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .copy-notification {
+            display: none;
+            background: rgba(15, 25, 35, 0.9);
+            border-left: 3px solid var(--valorant-red);
+            padding: 10px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            align-items: center;
+            color: var(--valorant-light);
+            font-weight: bold;
+        }
+        
+        .check-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            stroke: var(--valorant-red);
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        @media (max-width: 768px) {
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .preset-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 1.5rem 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>VALORANT SETTINGS GUIDE</h1>
+        <a href="FpsSettings.html" class="back-btn">← Torna alla selezione</a>
+    </header>
+
+    <!-- Sezione Schermo -->
+    <section class="settings-section" id="display-section">
+        <h2 class="section-title">IMPOSTAZIONI SCHERMO</h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/valorant-display-settings.jpg" alt="Impostazioni schermo VALORANT">
+            </div>
+            <div class="settings-desc">
+                <h3>Configurazione Ottimale</h3>
+                <p>Seleziona un preset per ottimizzare le impostazioni:</p>
+                
+                <div class="preset-container">
+                    <div class="preset-options">
+                        <div class="preset-card active" onclick="selectPreset('display', 'performance')">
+                            <h4>PRESTAZIONI</h4>
+                            <p>Massimi FPS</p>
+                            <p>1280x960 (4:3)</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('display', 'balanced')">
+                            <h4>BILANCIATO</h4>
+                            <p>FPS/Qualità mix</p>
+                            <p>1600x900 (16:9)</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('display', 'quality')">
+                            <h4>QUALITÀ</h4>
+                            <p>Migliori grafiche</p>
+                            <p>1920x1080 (16:9)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended">
+                    <p class="recommended-title">IMPOSTAZIONI CONSIGLIATE:</p>
+                    <ul id="display-settings">
+                        <li><strong>Modalità Schermo:</strong> Schermo Intero</li>
+                        <li><strong>Risoluzione:</strong> 1280x960 (4:3)</li>
+                        <li><strong>Limite FPS:</strong> Disabilitato</li>
+                        <li><strong>VSync:</strong> Disabilitato</li>
+                        <li><strong>Nvidia Reflex:</strong> On+Boost</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Grafica -->
+    <section class="settings-section" id="graphics-section">
+        <h2 class="section-title">IMPOSTAZIONI GRAFICHE</h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/valorant-graphics-settings.jpg" alt="Impostazioni grafiche VALORANT">
+            </div>
+            <div class="settings-desc">
+                <h3>Ottimizzazione Prestazioni</h3>
+                <p>Seleziona un preset per bilanciare qualità e prestazioni:</p>
+                
+                <div class="preset-container">
+                    <div class="preset-options">
+                        <div class="preset-card active" onclick="selectPreset('graphics', 'performance')">
+                            <h4>PRESTAZIONI</h4>
+                            <p>Massimi FPS</p>
+                            <p>Grafica minima</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('graphics', 'balanced')">
+                            <h4>BILANCIATO</h4>
+                            <p>FPS/Qualità mix</p>
+                            <p>Grafica media</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('graphics', 'quality')">
+                            <h4>QUALITÀ</h4>
+                            <p>Migliori grafiche</p>
+                            <p>FPS ridotti</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended">
+                    <p class="recommended-title">IMPOSTAZIONI GRAFICHE:</p>
+                    <ul id="graphics-settings">
+                        <li><strong>Materiali:</strong> Bassa</li>
+                        <li><strong>Texture:</strong> Bassa</li>
+                        <li><strong>Dettagli:</strong> Basso</li>
+                        <li><strong>Anti-Aliasing:</strong> Nessuno</li>
+                        <li><strong>Filtro Anisotropico:</strong> 1x</li>
+                        <li><strong>Ombre:</strong> Disabilitate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Impostazioni di Gioco -->
+    <section class="settings-section">
+        <h2 class="section-title">IMPOSTAZIONI DI GIOCO</h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/valorant-game-settings.jpg" alt="Impostazioni di gioco VALORANT">
+            </div>
+            <div class="settings-desc">
+                <h3>Configurazione Base</h3>
+                <p>Queste impostazioni influenzano il gameplay e l'esperienza generale.</p>
+                
+                <div class="recommended">
+                    <p class="recommended-title">IMPOSTAZIONI CONSIGLIATE:</p>
+                    <ul>
+                        <li><strong>Mostra Danni:</strong> Abilitato</li>
+                        <li><strong>Mostra Cronometro:</strong> Abilitato</li>
+                        <li><strong>Mostra Rete:</strong> Abilitato</li>
+                        <li><strong>Mostra Reticolo Minimappa:</strong> Abilitato</li>
+                        <li><strong>Mostra Nome Agente:</strong> Abilitato</li>
+                        <li><strong>Mostra Cadaveri:</strong> Disabilitato</li>
+                        <li><strong>Mostra Sangue:</strong> Abilitato</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sezione Mouse -->
+    <section class="settings-section">
+        <h2 class="section-title">IMPOSTAZIONI MOUSE</h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/valorant-mouse-settings.jpg" alt="Impostazioni mouse VALORANT">
+            </div>
+            <div class="settings-desc">
+                <h3>Sensibilità e Precisione</h3>
+                
+                <div class="recommended">
+                    <p class="recommended-title">CONFIGURAZIONE:</p>
+                    <ul>
+                        <li><strong>DPI:</strong> 1600</li>
+                        <li><strong>Sensibilità In-Game:</strong> 0.199</li>
+                        <li><strong>Scoped Sensitivity:</strong> 1.0</li>
+                        <li><strong>Raw Input Buffer:</strong> Abilitato</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sezione Audio -->
+    <section class="settings-section">
+        <h2 class="section-title">IMPOSTAZIONI AUDIO</h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/valorant-audio-settings.jpg" alt="Impostazioni audio VALORANT">
+            </div>
+            <div class="settings-desc">
+                <h3>Ottimizzazione Sonora</h3>
+                
+                <div class="recommended">
+                    <p class="recommended-title">IMPOSTAZIONI CONSIGLIATE:</p>
+                    <ul>
+                        <li><strong>Modalità Audio:</strong> Stereo</li>
+                        <li><strong>Volume Effetti:</strong> 70-80%</li>
+                        <li><strong>Volume Voce:</strong> 50-60%</li>
+                        <li><strong>Volume Musica:</strong> 10-20%</li>
+                        <li><strong>Abilita Audio HRTF:</strong> Sì</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sezione Crosshair -->
+    <section class="settings-section">
+        <h2 class="section-title">IMPOSTAZIONI CROSSHAIR</h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/valorant-crosshair-settings.jpg" alt="Impostazioni crosshair VALORANT">
+            </div>
+            <div class="settings-desc">
+                <h3>Configurazioni Popolari</h3>
+                
+                <div class="recommended">
+                    <p class="recommended-title">CODICI CROSSHAIR:</p>
+                    <div class="crosshair-buttons">
+                        <button class="crosshair-card" data-code="0;P;c;5;o;1;0t;1;0l;3;0o;2;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0">
+                            <span class="player-name">TenZ</span>
+                            <span class="code-hint">Ciano • 1-3-2</span>
+                        </button>
+                        
+                        <button class="crosshair-card" data-code="0;P;h;0;0l;4;0o;2;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0">
+                            <span class="player-name">Shroud</span>
+                            <span class="code-hint">Bianco • 4-2-1</span>
+                        </button>
+                        
+                        <button class="crosshair-card" data-code="0;P;c;1;h;0;f;0;0l;5;0o;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0">
+                            <span class="player-name">Scream</span>
+                            <span class="code-hint">Rosso • 5-1-1</span>
+                        </button>
+                        
+                        <button class="crosshair-card" data-code="0;P;c;5;h;0;f;0;0t;1;0l;4;0o;2;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0">
+                            <span class="player-name">Hiko</span>
+                            <span class="code-hint">Verde • 4-2-1</span>
+                        </button>
+                    </div>
+                    <div id="copy-notification" class="copy-notification">
+                        <svg class="check-icon" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        Codice copiato!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer style="text-align: center; padding: 2rem; background-color: rgba(15, 25, 35, 0.9); margin-top: 2rem;">
+        <p>Guida ai Settings di Valorant</p>
+        <p>EZ GET CANCER</p>
+    </footer>
+
+    <script>
+        // Preset configurazioni
+        const presets = {
+            display: {
+                performance: {
+                    resolution: "1280x960 (4:3)",
+                    fps: "Disabilitato",
+                    vsync: "Disabilitato"
+                },
+                balanced: {
+                    resolution: "1600x900 (16:9)",
+                    fps: "165",
+                    vsync: "Disabilitato"
+                },
+                quality: {
+                    resolution: "1920x1080 (16:9)",
+                    fps: "240",
+                    vsync: "Disabilitato"
+                }
+            },
+            graphics: {
+                performance: {
+                    materials: "Bassa",
+                    textures: "Bassa",
+                    details: "Basso",
+                    aa: "Nessuno/MSA 2X(Consigliato)",
+                    af: "1x/2x(Consigliato)",
+                    shadows: "Disabilitate"
+                },
+                balanced: {
+                    materials: "Media",
+                    textures: "Media",
+                    details: "Medio",
+                    aa: "MSAA 2x",
+                    af: "2x",
+                    shadows: "Disabilitate"
+                },
+                quality: {
+                    materials: "Alta",
+                    textures: "Alta",
+                    details: "Alto",
+                    aa: "MSAA 4x",
+                    af: "4x",
+                    shadows: "Abilitate"
+                }
+            }
+        };
+
+        // Funzione per selezionare i preset
+        function selectPreset(section, preset) {
+            // Aggiorna lo stato attivo delle card
+            const container = document.querySelector(`#${section}-section .preset-options`);
+            container.querySelectorAll('.preset-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Aggiorna le impostazioni visualizzate
+            updateSettings(section, preset);
+        }
+
+        // Funzione per aggiornare le impostazioni visualizzate
+        function updateSettings(section, preset) {
+            const settings = presets[section][preset];
+            const settingsList = document.getElementById(`${section}-settings`);
+            
+            if(section === 'display') {
+                settingsList.innerHTML = `
+                    <li><strong>Modalità Schermo:</strong> Schermo Intero</li>
+                    <li><strong>Risoluzione:</strong> ${settings.resolution}</li>
+                    <li><strong>Limite FPS:</strong> ${settings.fps}</li>
+                    <li><strong>VSync:</strong> ${settings.vsync}</li>
+                    <li><strong>Nvidia Reflex:</strong> On+Boost</li>
+                `;
+            } else {
+                settingsList.innerHTML = `
+                    <li><strong>Materiali:</strong> ${settings.materials}</li>
+                    <li><strong>Texture:</strong> ${settings.textures}</li>
+                    <li><strong>Dettagli:</strong> ${settings.details}</li>
+                    <li><strong>Anti-Aliasing:</strong> ${settings.aa}</li>
+                    <li><strong>Filtro Anisotropico:</strong> ${settings.af}</li>
+                    <li><strong>Ombre:</strong> ${settings.shadows}</li>
+                `;
+            }
+        }
+
+        // Gestione copia codici crosshair
+        document.addEventListener('DOMContentLoaded', function() {
+            const crosshairCards = document.querySelectorAll('.crosshair-card');
+            const copyNotification = document.getElementById('copy-notification');
+            
+            crosshairCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    
+                    // Copia il codice negli appunti
+                    navigator.clipboard.writeText(code).then(() => {
+                        // Mostra la notifica
+                        copyNotification.style.display = 'flex';
+                        
+                        // Nascondi la notifica dopo 3 secondi
+                        setTimeout(() => {
+                            copyNotification.style.display = 'none';
+                        }, 3000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
