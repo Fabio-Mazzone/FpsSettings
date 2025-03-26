@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPS Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <style>
+        /* CSS */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: linear-gradient(rgba(45, 46, 45, 0.9), rgba(20, 20, 20, 0.9)),
+                        url('immagini/image1.jpg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-content {
+            flex: 0 0 auto;
+        }
+
+        h1 {
+            font-size: 4em;
+            padding-top: 40px;
+            font-family: 'Lilita One', cursive;
+            color: #ffffff;
+            text-shadow: 2px 2px 0 #000000, 3px 3px 2px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            margin-bottom: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        h2 {
+            font-family: 'Lilita One', cursive;
+            font-size: 2.5em;
+            margin: 15px 0;
+            text-shadow: 2px 2px 0px black;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+        }
+
+        .loaded h1,
+        .loaded h2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-spacer {
+            flex: 1;
+            min-height: 10vh; /* Ridotto per alzare i bottoni */
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 0 auto;
+            max-width: 1400px;
+            flex-wrap: wrap;
+            padding: 30px;
+            flex: 0 0 auto;
+        }
+
+        .game {
+            width: 380px;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .game.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .game:hover {
+            transform: scale(1.05) translateY(-5px) !important;
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.95);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8em; }
+            h2 { font-size: 2em; }
+            .game-container { gap: 40px; padding: 20px; }
+            .game { width: 320px; height: 200px; }
+            .scroll-spacer { min-height: 5vh; } /* Ridotto ulteriormente su mobile */
+        }
+    </style>
+</head>
+<body>
+    <div class="header-content">
+        <h1>FPS Settings</h1>
+        <h2>Scegli il gioco</h2>
+    </div>
+    
+    <div class="scroll-spacer"></div>
+    
+    <div class="game-container">
+        <div id="game1" class="game"></div>
+        <div id="game2" class="game"></div>
+        <div id="game3" class="game"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animazione titoli (parte immediatamente)
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+                
+                // Dopo che i titoli hanno finito di animare, attiva il listener per i bottoni
+                setTimeout(() => {
+                    setupButtonAnimation();
+                }, 1000); // 1 secondo dopo l'inizio animazione titoli
+            }, 300);
+
+            // Carica le immagini
+            document.getElementById('game1').style.backgroundImage = "url('immagini/Valorant.png')";
+            document.getElementById('game2').style.backgroundImage = "url('immagini/RainbowSixSiege.png')";
+            document.getElementById('game3').style.backgroundImage = "url('immagini/apexlegends.png')";
+
+            function setupButtonAnimation() {
+                const games = document.querySelectorAll('.game');
+                let animationTriggered = false;
+
+                function handleScroll() {
+                    if (animationTriggered) return;
+                    
+                    const container = document.querySelector('.game-container');
+                    const containerTop = container.getBoundingClientRect().top;
+                    const triggerPoint = window.innerHeight / 1.5;
+
+                    if (containerTop < triggerPoint) {
+                        animationTriggered = true;
+                        
+                        games.forEach((game, index) => {
+                            setTimeout(() => {
+                                game.classList.add('visible');
+                            }, index * 150);
+                        });
+                        
+                        window.removeEventListener('scroll', handleScroll);
+                    }
+                }
+
+                window.addEventListener('scroll', handleScroll);
+                handleScroll(); // Controlla subito se già in posizione
+            }
+
+            // Gestione click per reindirizzamento
+            document.querySelectorAll('.game').forEach(game => {
+                game.addEventListener('click', function() {
+                    switch(game.id) {
+                        case 'game1':
+                            window.location.href = 'valorant-settings.html';
+                            break;
+                        case 'game2':
+                            window.location.href = 'rainbowsix-settings.html';
+                            break;
+                        case 'game3':
+                            window.location.href = 'apexlegends-settings.html';
+                            break;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
