@@ -69,11 +69,18 @@
             background: var(--r6-orange);
         }
         
+        .header .container {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
         .back-btn {
+            position: absolute;
+            right: 2rem;
+            bottom: 0;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-top: 1.5rem;
             padding: 0.75rem 2rem;
             background-color: var(--r6-blue);
             color: white;
@@ -82,11 +89,12 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transform-origin: center;
         }
         
         .back-btn:hover {
             background-color: var(--r6-orange);
-            transform: translateY(-3px);
+            transform: scale(1.05);
             box-shadow: 0 6px 12px rgba(255,125,0,0.3);
         }
         
@@ -354,6 +362,19 @@
             .preset-options {
                 grid-template-columns: 1fr;
             }
+            
+            .back-btn {
+                position: relative;
+                right: auto;
+                margin: 1.5rem auto 0;
+                display: block;
+                width: fit-content;
+                transform: none !important;
+            }
+            
+            .back-btn:hover {
+                transform: scale(1.05) !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -375,7 +396,7 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1>RAINBOW SIX SIEGE </h1>
+            <h1>RAINBOW SIX SIEGE</h1>
             <a href="FpsSettings.html" class="back-btn">
                 <i class="fas fa-arrow-left"></i> Torna alla selezione
             </a>
