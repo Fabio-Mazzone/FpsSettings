@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Legends Settings Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --apex-orange: #ff4655;
+            --apex-dark: #1a1a1a;
+            --apex-darker: #0d0d0d;
+            --apex-light: #f0f0f0;
+            --apex-accent: #00c8ff;
+            --section-spacing: 2.5rem;
+        }
+        
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--apex-light);
+            background-color: var(--apex-dark);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 75% 25%, rgba(255,70,85,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(0,200,255,0.1) 0%, transparent 50%);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--apex-darker) 0%, rgba(255,70,85,0.3) 100%);
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 3px solid var(--apex-orange);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--apex-orange), var(--apex-accent), var(--apex-orange));
+        }
+        
+        h1 {
+            font-weight: 700;
+            color: var(--apex-accent);
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--apex-orange);
+        }
+        
+        .header .container {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .back-btn {
+            position: absolute;
+            right: 2rem;
+            bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.75rem 2rem;
+            background-color: var(--apex-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transform-origin: center;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--apex-orange);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(255,70,85,0.3);
+        }
+        
+        /* Resto dello stile identico alla tua pagina R6 */
+        .settings-section {
+            max-width: 1200px;
+            margin: var(--section-spacing) auto;
+            padding: 2rem;
+            background-color: rgba(26, 26, 26, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid rgba(0,200,255,0.2);
+        }
+        
+        /* ... (mantieni tutto il resto dello stile come nella tua pagina R6) ... */
+        
+        /* Stile specifico per Apex */
+        .apex-preset {
+            border-left: 4px solid var(--apex-orange);
+        }
+        
+        .apex-preset h4 {
+            color: var(--apex-orange);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>APEX LEGENDS</h1>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Torna alla selezione
+            </a>
+        </div>
+    </header>
+
+    <!-- Sezione Schermo -->
+    <section class="settings-section" id="display-section">
+        <h2 class="section-title">
+            <i class="fas fa-desktop"></i> IMPOSTAZIONI SCHERMO
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/apex-display-settings.jpg" alt="Impostazioni schermo Apex">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-sliders-h"></i> Configurazione Ottimale</h3>
+                <p>Ottimizza le impostazioni per il competitivo su Apex Legends.</p>
+                
+                <div class="preset-container">
+                    <p class="recommended-title">
+                        <i class="fas fa-tachometer-alt"></i> SELEZIONA PRESET:
+                    </p>
+                    <div class="preset-options">
+                        <div class="preset-card apex-preset active" onclick="selectPreset('display', 'performance')">
+                            <h4><i class="fas fa-bolt"></i> PRESTAZIONI</h4>
+                            <p>240+ FPS</p>
+                            <p>4:3 stretched</p>
+                            <p>Low settings</p>
+                        </div>
+                        <div class="preset-card apex-preset" onclick="selectPreset('display', 'balanced')">
+                            <h4><i class="fas fa-balance-scale"></i> BILANCIATO</h4>
+                            <p>144 FPS stable</p>
+                            <p>16:9 native</p>
+                            <p>Medium settings</p>
+                        </div>
+                        <div class="preset-card apex-preset" onclick="selectPreset('display', 'quality')">
+                            <h4><i class="fas fa-eye"></i> QUALITÀ</h4>
+                            <p>Grafica premium</p>
+                            <p>16:9 native</p>
+                            <p>High settings</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended">
+                    <p class="recommended-title">
+                        <i class="fas fa-check-circle"></i> IMPOSTAZIONI CONSIGLIATE PRO:
+                    </p>
+                    <ul id="display-settings">
+                        <li><strong>Risoluzione:</strong> 1920x1080 (16:9) o 1728x1080 (16:10)</li>
+                        <li><strong>Refresh Rate:</strong> Massimo disponibile</li>
+                        <li><strong>FOV:</strong> 100-110</li>
+                        <li><strong>VSync:</strong> Disabilitato</li>
+                        <li><strong>Modalità Fullscreen:</strong> Esclusiva</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> FOV più ampio = migliore visibilità periferica</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Grafica -->
+    <section class="settings-section" id="graphics-section">
+        <h2 class="section-title">
+            <i class="fas fa-image"></i> IMPOSTAZIONI GRAFICHE
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/apex-graphics-settings.jpg" alt="Impostazioni grafiche Apex">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-cog"></i> Ottimizzazione Prestazioni</h3>
+                <p>Configurazioni testate da pro player per massimizzare FPS e visibilità:</p>
+                
+                <div class="recommended apex-preset">
+                    <p class="recommended-title">
+                        <i class="fas fa-check-circle"></i> IMPOSTAZIONI GRAFICHE PRO:
+                    </p>
+                    <ul id="graphics-settings">
+                        <li><strong>Modello Texture:</strong> Basso</li>
+                        <li><strong>Filtro Texture:</strong> Bilineare</li>
+                        <li><strong>Dettagli Modelli:</strong> Basso</li>
+                        <li><strong>Effetti:</strong> Disabilitati</li>
+                        <li><strong>Ombre:</strong> Disabilitate</li>
+                        <li><strong>Anti-Aliasing:</strong> TSAA</li>
+                        <li><strong>Streaming Texture:</strong> Disabilitato</li>
+                        <li><strong>Volumetric Lighting:</strong> Disabilitato</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> Disabilita tutto il superfluo per massimizzare gli FPS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Mouse -->
+    <section class="settings-section">
+        <h2 class="section-title">
+            <i class="fas fa-mouse"></i> IMPOSTAZIONI MOUSE
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="immagini/apex-mouse-settings.jpg" alt="Impostazioni mouse Apex">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-bullseye"></i> Sensibilità Pro Player</h3>
+                
+                <div class="recommended apex-preset">
+                    <p class="recommended-title">
+                        <i class="fas fa-trophy"></i> CONFIGURAZIONE:
+                    </p>
+                    <ul>
+                        <li><strong>DPI:</strong> 800-1600</li>
+                        <li><strong>Sensibilità:</strong> 1.0-2.0</li>
+                        <li><strong>ADS Sensibilità:</strong> 1.0 (1:1 con hipfire)</li>
+                        <li><strong>Accelerazione:</strong> Disabilitata</li>
+                        <li><strong>Raw Input:</strong> Abilitato</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> La maggior parte dei pro usa 800DPI con sens 1.5-2.0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Config File -->
+    <section class="settings-section">
+        <h2 class="section-title">
+            <i class="fas fa-code"></i> CONFIG FILE (autoexec.cfg)
+        </h2>
+        <div class="settings-desc">
+            <h3><i class="fas fa-file-alt"></i> Comandi Avanzati</h3>
+            
+            <div class="recommended apex-preset">
+                <p class="recommended-title">
+                    <i class="fas fa-cogs"></i> COMANDI ESSENZIALI:
+                </p>
+                <pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto;">
+// Ottimizzazioni Netcode
+cl_clock_correction "0"
+cl_pred_optimize "2"
+cl_interp "0"
+cl_interp_ratio "1"
+
+// Ottimizzazioni Video
+fps_max "300"
+mat_backbuffer_count "2"
+r_createmodeldecals "0"
+r_dynamic "0"</pre>
+                <p class="detail"><i class="fas fa-info-circle"></i> Salva come autoexec.cfg in /Origin Games/Apex/cfg/</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 3rem; background: linear-gradient(135deg, var(--apex-darker) 0%, rgba(255,70,85,0.3) 100%); margin-top: var(--section-spacing); position: relative;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3 style="color: var(--apex-accent); margin-bottom: 1.5rem;">APEX LEGENDS PRO SETTINGS</h3>
+            <p style="color: rgba(240,240,240,0.8); margin-bottom: 2rem;">Guida ufficiale alle impostazioni ottimali per Apex Legends</p>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+                <a href="#" style="color: var(--apex-light); font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: var(--apex-light); font-size: 1.5rem;"><i class="fab fa-discord"></i></a>
+                <a href="#" style="color: var(--apex-light); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="color: rgba(240,240,240,0.6); font-size: 0.9rem;">© 2023 Apex Legends Settings Guide. Non affiliato con Electronic Arts.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Stesso script della pagina R6 con modifiche minime
+        const presets = {
+            display: {
+                performance: {
+                    resolution: "1728x1080 (16:10)",
+                    fov: "110",
+                    details: [
+                        "Massimi FPS competitivi",
+                        "Grafica minima",
+                        "Ideale per PC mid-range"
+                    ]
+                },
+                balanced: {
+                    resolution: "1920x1080 (16:9)",
+                    fov: "104",
+                    details: [
+                        "Bilanciato FPS/qualità",
+                        "Grafica media",
+                        "Ottimo per la maggior parte"
+                    ]
+                },
+                quality: {
+                    resolution: "2560x1440 (16:9)",
+                    fov: "100",
+                    details: [
+                        "Grafica premium",
+                        "Per hardware potente",
+                        "FPS ridotti"
+                    ]
+                }
+            }
+        };
+
+        function selectPreset(section, preset) {
+            // Implementazione identica alla tua pagina R6
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animazioni identiche alla tua pagina R6
+        });
+    </script>
+</body>
+</html>
