@@ -331,6 +331,13 @@
             color: rgba(224,225,221,0.8);
         }
         
+        /* Controller section styles */
+        .controller-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,168,225,0.3);
+        }
+        
         /* Responsive */
         @media (max-width: 1024px) {
             .settings-grid {
@@ -548,7 +555,7 @@
         </div>
     </section>
     
-    <!-- Sezione Mouse -->
+    <!-- Sezione Controlli (Mouse + Controller) -->
     <section class="settings-section">
         <h2 class="section-title">
             <i class="fas fa-mouse"></i> IMPOSTAZIONI CONTROLLI
@@ -558,12 +565,13 @@
                 <img src="immagini/r6-mouse-settings.jpg" alt="Impostazioni mouse R6">
             </div>
             <div class="settings-desc">
-                <h3><i class="fas fa-bullseye"></i> Sensibilità e Precisione</h3>
+                <!-- Sezione Mouse -->
+                <h3><i class="fas fa-bullseye"></i> Sensibilità Mouse</h3>
                 <p>Configurazioni ottimali per il controllo perfetto durante i combattimenti.</p>
                 
                 <div class="recommended">
                     <p class="recommended-title">
-                        <i class="fas fa-trophy"></i> CONFIGURAZIONE:
+                        <i class="fas fa-trophy"></i> CONFIGURAZIONE MOUSE:
                     </p>
                     <ul>
                         <li><strong>DPI:</strong> 1600</li>
@@ -573,6 +581,55 @@
                         <li><strong>ADS Sensitivity:</strong> 52</li>
                         <li><strong>Raw Input:</strong> Abilitato</li>
                     </ul>
+                </div>
+                
+                <!-- Sezione Controller -->
+                <div class="controller-section">
+                    <h3><i class="fas fa-gamepad"></i> Sensibilità Controller</h3>
+                    <p>Ottimizza le impostazioni per il gamepad per una migliore precisione.</p>
+                    
+                    <div class="preset-container">
+                        <p class="recommended-title">
+                            <i class="fas fa-tachometer-alt"></i> SELEZIONA PRESET:
+                        </p>
+                        <div class="preset-options">
+                            <div class="preset-card active" onclick="selectPreset('controller', 'precision')">
+                                <h4><i class="fas fa-crosshairs"></i> PRECISIONE</h4>
+                                <p>Mira precisa</p>
+                                <p>Sensibilità bassa</p>
+                                <p>Ideale per scatti</p>
+                            </div>
+                            <div class="preset-card" onclick="selectPreset('controller', 'balanced')">
+                                <h4><i class="fas fa-balance-scale"></i> BILANCIATO</h4>
+                                <p>Buona precisione</p>
+                                <p>Reattività media</p>
+                                <p>Per tutti gli stili</p>
+                            </div>
+                            <div class="preset-card" onclick="selectPreset('controller', 'responsive')">
+                                <h4><i class="fas fa-running"></i> REATTIVO</h4>
+                                <p>Giro rapido</p>
+                                <p>Sensibilità alta</p>
+                                <p>Per gioco aggressivo</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recommended">
+                        <p class="recommended-title">
+                            <i class="fas fa-check-circle"></i> IMPOSTAZIONI CONTROLLER:
+                        </p>
+                        <ul id="controller-settings">
+                            <li><strong>Sensibilità Verticale:</strong> 35</li>
+                            <li><strong>Sensibilità Orizzontale:</strong> 45</li>
+                            <li><strong>Sensibilità ADS:</strong> 25</li>
+                            <li><strong>Deadzone Stick DX:</strong> 5</li>
+                            <li><strong>Deadzone Stick SX:</strong> 10</li>
+                            <li><strong>Curva di risposta:</strong> Classica</li>
+                            <li><strong>Vibrazione:</strong> Disabilitata</li>
+                            <li class="detail"><i class="fas fa-info-circle"></i> Deadzone bassa per maggiore precisione</li>
+                            <li class="detail"><i class="fas fa-info-circle"></i> Curva classica per controllo prevedibile</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -699,6 +756,44 @@
                         "Per hardware potente"
                     ]
                 }
+            },
+            controller: {
+                precision: {
+                    vertical: "30",
+                    horizontal: "40",
+                    ads: "20",
+                    deadzone: "5",
+                    curve: "Classica",
+                    details: [
+                        "Per mira precisa a lunga distanza",
+                        "Ideale per fucili di precisione",
+                        "Movimenti più controllati"
+                    ]
+                },
+                balanced: {
+                    vertical: "40",
+                    horizontal: "50",
+                    ads: "30",
+                    deadzone: "7",
+                    curve: "Classica",
+                    details: [
+                        "Bilanciato per tutti gli stili",
+                        "Buona precisione e reattività",
+                        "Configurazione versatile"
+                    ]
+                },
+                responsive: {
+                    vertical: "50",
+                    horizontal: "70",
+                    ads: "35",
+                    deadzone: "5",
+                    curve: "Classica",
+                    details: [
+                        "Per gioco aggressivo",
+                        "Giri rapidi a 180°",
+                        "Ideale per SMG e combattimenti ravvicinati"
+                    ]
+                }
             }
         };
 
@@ -711,7 +806,7 @@
             }, 300);
             
             // Aggiorna lo stato attivo delle card
-            const container = document.querySelector(`#${section}-section .preset-options`);
+            const container = event.currentTarget.closest('.preset-options');
             container.querySelectorAll('.preset-card').forEach(card => {
                 card.classList.remove('active');
             });
@@ -735,7 +830,8 @@
                     <li><strong>FOV:</strong> ${settings.fov}</li>
                     ${settings.details.map(detail => `<li class="detail"><i class="fas fa-info-circle"></i> ${detail}</li>`).join('')}
                 `;
-            } else {
+            } 
+            else if(section === 'graphics') {
                 settingsList.innerHTML = `
                     <li><strong>Qualità Texture:</strong> ${settings.textures}</li>
                     <li><strong>Filtro Texture:</strong> ${preset === 'performance' ? 'Lineare' : 'Anisotropico 4x'}</li>
@@ -748,6 +844,18 @@
                     ${settings.details.map(detail => `<li class="detail"><i class="fas fa-info-circle"></i> ${detail}</li>`).join('')}
                 `;
             }
+            else if(section === 'controller') {
+                settingsList.innerHTML = `
+                    <li><strong>Sensibilità Verticale:</strong> ${settings.vertical}</li>
+                    <li><strong>Sensibilità Orizzontale:</strong> ${settings.horizontal}</li>
+                    <li><strong>Sensibilità ADS:</strong> ${settings.ads}</li>
+                    <li><strong>Deadzone Stick DX:</strong> ${settings.deadzone}</li>
+                    <li><strong>Deadzone Stick SX:</strong> ${settings.deadzone}</li>
+                    <li><strong>Curva di risposta:</strong> ${settings.curve}</li>
+                    <li><strong>Vibrazione:</strong> Disabilitata</li>
+                    ${settings.details.map(detail => `<li class="detail"><i class="fas fa-info-circle"></i> ${detail}</li>`).join('')}
+                `;
+            }
         }
 
         // Inizializzazione
@@ -755,6 +863,7 @@
             // Inizializza i preset
             updateSettings('display', 'performance');
             updateSettings('graphics', 'performance');
+            updateSettings('controller', 'precision');
             
             // Aggiungi animazioni agli elementi
             const sections = document.querySelectorAll('.settings-section');
