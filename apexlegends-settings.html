@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Legends Pro Settings</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Apex Legends Settings Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --apex-primary: #FF4655;
-            --apex-secondary: #00C8FF;
-            --apex-dark: #161616;
-            --apex-darker: #0D0D0D;
-            --apex-light: #F0F0F0;
-            --apex-gray: #2A2A2A;
+            --apex-primary: #FF5E29; /* Arancione principale */
+            --apex-secondary: #E63946; /* Rosso sangue */
+            --apex-accent: #FF3A2D; /* Rosso acceso */
+            --apex-dark: #1A1A1A; /* Sfondo scuro */
+            --apex-darker: #0D0D0D; /* Sfondo più scuro */
+            --apex-card: #252525; /* Sfondo card */
+            --apex-light: #F5F5F5; /* Testo chiaro */
+            --apex-border: #3A3A3A; /* Bordi */
             --section-spacing: 2.5rem;
+            --border-radius: 6px;
         }
         
         body {
-            font-family: 'Ubuntu', sans-serif;
+            font-family: 'Teko', sans-serif;
             margin: 0;
             padding: 0;
             color: var(--apex-light);
             background-color: var(--apex-dark);
             line-height: 1.6;
             background-image: 
-                radial-gradient(circle at 75% 25%, rgba(255,70,85,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 25% 75%, rgba(0,200,255,0.1) 0%, transparent 50%);
+                linear-gradient(to bottom, rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.95)),
+                url('https://media.contentapi.ea.com/content/dam/apex-legends/common/apex-section-bg-texture-red.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            letter-spacing: 0.5px;
         }
         
         .header {
-            background: linear-gradient(135deg, var(--apex-darker) 0%, rgba(255,70,85,0.3) 100%);
+            background: linear-gradient(135deg, var(--apex-darker) 0%, rgba(230, 57, 70, 0.4) 100%);
             text-align: center;
             padding: 3rem 0;
             border-bottom: 3px solid var(--apex-primary);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 30px rgba(230, 57, 70, 0.3);
         }
         
         .header::after {
@@ -45,28 +52,32 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--apex-primary), var(--apex-secondary), var(--apex-primary));
+            background: linear-gradient(90deg, var(--apex-primary), var(--apex-accent), var(--apex-primary));
         }
         
         h1 {
-            font-weight: 700;
-            color: var(--apex-secondary);
-            font-size: 3.5rem;
+            font-family: 'Anton', sans-serif;
+            font-weight: 400;
+            color: var(--apex-primary);
+            font-size: 4rem;
             margin: 0;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             position: relative;
             display: inline-block;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
         
         h1::after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--apex-primary);
+            width: 120px;
+            height: 4px;
+            background: var(--apex-accent);
+            border-radius: 2px;
         }
         
         .header .container {
@@ -82,32 +93,43 @@
             align-items: center;
             gap: 8px;
             padding: 0.75rem 2rem;
-            background-color: var(--apex-secondary);
+            background-color: var(--apex-primary);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: var(--border-radius);
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(255, 94, 41, 0.4);
             transform-origin: center;
+            font-family: 'Teko', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .back-btn:hover {
-            background-color: var(--apex-primary);
+            background-color: var(--apex-accent);
             transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(255,70,85,0.3);
+            box-shadow: 0 6px 16px rgba(230, 57, 70, 0.5);
+        }
+        
+        .back-btn i {
+            font-size: 1.1rem;
         }
         
         .settings-section {
             max-width: 1200px;
             margin: var(--section-spacing) auto;
             padding: 2rem;
-            background-color: rgba(22, 22, 22, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            border: 1px solid rgba(0,200,255,0.2);
+            background-color: var(--apex-card);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--apex-border);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(4px);
         }
         
         .settings-section::before {
@@ -117,17 +139,20 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--apex-primary), var(--apex-secondary));
+            background: linear-gradient(90deg, var(--apex-primary), var(--apex-accent));
         }
         
         .section-title {
-            font-weight: 700;
-            color: var(--apex-secondary);
-            font-size: 2.2rem;
+            font-family: 'Anton', sans-serif;
+            font-weight: 400;
+            color: var(--apex-primary);
+            font-size: 2.5rem;
             margin-top: 0;
             margin-bottom: 1.5rem;
             position: relative;
             padding-left: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .section-title::before {
@@ -137,7 +162,7 @@
             top: 0;
             bottom: 0;
             width: 6px;
-            background: var(--apex-primary);
+            background: var(--apex-accent);
             border-radius: 3px;
         }
         
@@ -149,17 +174,18 @@
         }
         
         .screenshot-container {
-            border: 2px solid var(--apex-secondary);
-            border-radius: 8px;
+            border: 2px solid var(--apex-primary);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
             position: relative;
         }
         
         .screenshot-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,200,255,0.2);
+            box-shadow: 0 12px 30px rgba(255, 94, 41, 0.4);
+            border-color: var(--apex-accent);
         }
         
         .screenshot-container img {
@@ -168,47 +194,79 @@
             transition: transform 0.5s ease;
         }
         
+        .screenshot-container:hover img {
+            transform: scale(1.03);
+        }
+        
         .settings-desc {
             padding: 1rem;
         }
         
         .settings-desc h3 {
-            color: var(--apex-primary);
+            color: var(--apex-accent);
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Teko', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .settings-desc h3 i {
-            color: var(--apex-secondary);
+            color: var(--apex-primary);
+            font-size: 1.5rem;
+        }
+        
+        .settings-desc p {
+            margin-bottom: 1.5rem;
+            color: rgba(245, 245, 245, 0.9);
             font-size: 1.3rem;
+            line-height: 1.5;
         }
         
         .recommended {
-            background: linear-gradient(135deg, rgba(22,22,22,0.9) 0%, rgba(255,70,85,0.15) 100%);
+            background: linear-gradient(135deg, rgba(37, 37, 37, 0.9) 0%, rgba(230, 57, 70, 0.15) 100%);
             padding: 1.5rem;
             border-left: 4px solid var(--apex-primary);
             margin: 1.5rem 0;
-            border-radius: 6px;
+            border-radius: var(--border-radius);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 94, 41, 0.1);
+        }
+        
+        .recommended::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 94, 41, 0.1), transparent);
+            z-index: -1;
         }
         
         .recommended-title {
             font-weight: bold;
-            color: var(--apex-primary);
-            font-size: 1.1rem;
+            color: var(--apex-accent);
+            font-size: 1.4rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Teko', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .recommended-title i {
-            font-size: 1rem;
+            font-size: 1.3rem;
+            color: var(--apex-primary);
         }
         
         .recommended ul {
@@ -217,77 +275,263 @@
         }
         
         .recommended li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             position: relative;
-            padding-left: 1rem;
+            padding-left: 1.5rem;
+            font-size: 1.3rem;
+            line-height: 1.6;
         }
         
         .recommended li::before {
-            content: "•";
-            color: var(--apex-secondary);
+            content: "▸";
+            color: var(--apex-primary);
             font-weight: bold;
             position: absolute;
             left: 0;
+            font-size: 1.5rem;
         }
         
         .recommended li strong {
-            color: var(--apex-primary);
+            color: var(--apex-accent);
+            font-weight: 600;
         }
         
+        /* Stili preset */
         .preset-container {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
         
         .preset-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
         }
         
         .preset-card {
-            background: linear-gradient(135deg, rgba(22,22,22,0.9) 0%, rgba(255,70,85,0.1) 100%);
-            border: 2px solid rgba(255, 70, 85, 0.3);
-            border-radius: 8px;
-            padding: 1.5rem 1rem;
+            background: linear-gradient(135deg, rgba(37, 37, 37, 0.9) 0%, rgba(255, 94, 41, 0.1) 100%);
+            border: 2px solid rgba(255, 94, 41, 0.3);
+            border-radius: var(--border-radius);
+            padding: 1.8rem 1.2rem;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .preset-card::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--apex-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
         .preset-card:hover {
-            border-color: var(--apex-primary);
+            border-color: var(--apex-accent);
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(255, 70, 85, 0.2);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+        }
+        
+        .preset-card:hover::before {
+            transform: scaleX(1);
         }
         
         .preset-card.active {
-            border-color: var(--apex-primary);
-            background: linear-gradient(135deg, rgba(22,22,22,0.9) 0%, rgba(255,70,85,0.2) 100%);
+            border-color: var(--apex-accent);
+            background: linear-gradient(135deg, rgba(37, 37, 37, 0.9) 0%, rgba(230, 57, 70, 0.2) 100%);
+            box-shadow: 0 0 0 2px var(--apex-accent);
+        }
+        
+        .preset-card.active::before {
+            transform: scaleX(1);
+            background: var(--apex-accent);
         }
         
         .preset-card h4 {
-            color: var(--apex-primary);
+            color: var(--apex-accent);
             margin-top: 0;
-            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+            font-family: 'Teko', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
-        .config-code {
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 6px;
-            padding: 1rem;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-            border-left: 3px solid var(--apex-secondary);
+        .preset-card p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: rgba(245, 245, 245, 0.8);
         }
         
+        .preset-card i {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--apex-primary);
+        }
+        
+        /* Stili per i bottoni dei sensibilità */
+        .sensitivity-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .sensitivity-card {
+            background: rgba(37, 37, 37, 0.7);
+            border: 1px solid rgba(255, 94, 41, 0.3);
+            border-radius: var(--border-radius);
+            padding: 1.2rem 0.8rem;
+            color: var(--apex-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sensitivity-card:hover {
+            background: rgba(230, 57, 70, 0.2);
+            border-color: var(--apex-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(230, 57, 70, 0.3);
+        }
+        
+        .sensitivity-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--apex-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .sensitivity-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .legend-name {
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--apex-accent);
+            font-family: 'Teko', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .sensitivity-hint {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--apex-light);
+        }
+        
+        /* Stile per i dettagli aggiuntivi */
+        .detail {
+            font-size: 1.1rem;
+            color: rgba(245, 245, 245, 0.7);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-style: italic;
+        }
+        
+        .detail i {
+            color: var(--apex-primary);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--apex-darker) 0%, rgba(230, 57, 70, 0.3) 100%);
+            margin-top: var(--section-spacing);
+            position: relative;
+            border-top: 1px solid rgba(255, 94, 41, 0.2);
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--apex-primary), var(--apex-accent));
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            color: var(--apex-primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .footer p {
+            color: rgba(245, 245, 245, 0.8);
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .social-links a {
+            color: var(--apex-light);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--apex-accent);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .copyright {
+            color: rgba(245, 245, 245, 0.6);
+            font-size: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 1024px) {
             .settings-grid {
-                gap: 1.5rem;
+                gap: 2rem;
             }
             
             .preset-options {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            h1 {
+                font-size: 3.5rem;
             }
         }
         
@@ -296,12 +540,62 @@
                 grid-template-columns: 1fr;
             }
             
+            .header {
+                padding: 2rem 0;
+            }
+            
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .settings-section {
+                padding: 1.8rem;
             }
             
             .preset-options {
                 grid-template-columns: 1fr;
+            }
+            
+            .back-btn {
+                position: relative;
+                right: auto;
+                margin: 1.5rem auto 0;
+                display: block;
+                width: fit-content;
+                transform: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                padding-left: 1rem;
+            }
+            
+            .section-title::before {
+                width: 4px;
+            }
+            
+            .back-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .settings-desc h3 {
+                font-size: 1.6rem;
+            }
+            
+            .settings-desc p,
+            .recommended li {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -311,4 +605,384 @@
         <div class="container">
             <h1>APEX LEGENDS</h1>
             <a href="index.html" class="back-btn">
-                <
+                <i class="fas fa-arrow-left"></i> TORNA INDIETRO
+            </a>
+        </div>
+    </header>
+
+    <!-- Sezione Schermo -->
+    <section class="settings-section" id="display-section">
+        <h2 class="section-title">
+            <i class="fas fa-desktop"></i> IMPOSTAZIONI SCHERMO
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2023/02/apex-section-bg-settings-screen.jpg" alt="Impostazioni schermo Apex Legends">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-sliders-h"></i> CONFIGURAZIONE OTTIMALE</h3>
+                <p>Ottimizza le impostazioni dello schermo per ottenere il massimo vantaggio competitivo in Apex Legends. La giusta configurazione può migliorare la visibilità dei nemici e la fluidità del gioco.</p>
+                
+                <div class="preset-container">
+                    <p class="recommended-title">
+                        <i class="fas fa-tachometer-alt"></i> SELEZIONA PRESET:
+                    </p>
+                    <div class="preset-options">
+                        <div class="preset-card active" onclick="selectPreset('display', 'performance')">
+                            <i class="fas fa-bolt"></i>
+                            <h4>PRESTAZIONI</h4>
+                            <p>Massimi FPS</p>
+                            <p>1568:1080 (4:3)</p>
+                            <p>Priorità fluidità</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('display', 'balanced')">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>BILANCIATO</h4>
+                            <p>FPS/Qualità mix</p>
+                            <p>1600x1080 (3:2)</p>
+                            <p>Bilanciato</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('display', 'quality')">
+                            <i class="fas fa-eye"></i>
+                            <h4>QUALITÀ</h4>
+                            <p>Migliori grafiche</p>
+                            <p>1920x1080 (16:9)</p>
+                            <p>Estetica premium</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended">
+                    <p class="recommended-title">
+                        <i class="fas fa-check-circle"></i> IMPOSTAZIONI CONSIGLIATE:
+                    </p>
+                    <ul id="display-settings">
+                        <li><strong>Modalità Schermo:</strong> Fullscreen</li>
+                        <li><strong>Risoluzione:</strong> 1920:1080(16:9)</li>
+                        <li><strong>Refresh Rate:</strong> Massimo disponibile</li>
+                        <li><strong>VSync:</strong> Disabilitato</li>
+                        <li><strong>FOV:</strong> 100-110</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> FOV più alto offre maggiore visibilità periferica</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> Disabilita VSync per ridurre l'input lag</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Grafica -->
+    <section class="settings-section" id="graphics-section">
+        <h2 class="section-title">
+            <i class="fas fa-image"></i> IMPOSTAZIONI GRAFICHE
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2023/02/apex-section-bg-settings-graphics.jpg" alt="Impostazioni grafiche Apex Legends">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-cog"></i> OTTIMIZZAZIONE PRESTAZIONI</h3>
+                <p>Configurazioni ottimizzate per competitività e visibilità in Apex Legends. Trova il perfetto equilibrio tra qualità visiva e prestazioni fluide.</p>
+                
+                <div class="preset-container">
+                    <p class="recommended-title">
+                        <i class="fas fa-tachometer-alt"></i> SELEZIONA PRESET:
+                    </p>
+                    <div class="preset-options">
+                        <div class="preset-card active" onclick="selectPreset('graphics', 'performance')">
+                            <i class="fas fa-bolt"></i>
+                            <h4>PRESTAZIONI</h4>
+                            <p>Massimi FPS</p>
+                            <p>Tutto al minimo</p>
+                            <p>Modelli Alto</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('graphics', 'balanced')">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>BILANCIATO</h4>
+                            <p>FPS/Qualità mix</p>
+                            <p>Grafica media</p>
+                            <p>Ombre Alto</p>
+                        </div>
+                        <div class="preset-card" onclick="selectPreset('graphics', 'quality')">
+                            <i class="fas fa-eye"></i>
+                            <h4>QUALITÀ</h4>
+                            <p>Migliori grafiche</p>
+                            <p>FPS ridotti</p>
+                            <p>Ombre Ultra</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended">
+                    <p class="recommended-title">
+                        <i class="fas fa-check-circle"></i> IMPOSTAZIONI GRAFICHE:
+                    </p>
+                    <ul id="graphics-settings">
+                        <li><strong>Qualità Texture:</strong> Basso</li>
+                        <li><strong>Filtro Texture:</strong> Lineare</li>
+                        <li><strong>Dettagli Modelli:</strong> Alto</li>
+                        <li><strong>Ombre:</strong> Disabilitate</li>
+                        <li><strong>Riflessi:</strong> Disabilitato</li>
+                        <li><strong>Occlusione Ambientale:</strong> Disabilitato</li>
+                        <li><strong>Anti-Aliasing:</strong> TSAA</li>
+                        <li><strong>Effetti Luminosi:</strong> Disabilitato</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> Modelli Alto per migliorare la visibilità dei nemici</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> Ombre disabilitate per massimizzare gli FPS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Mouse -->
+    <section class="settings-section">
+        <h2 class="section-title">
+            <i class="fas fa-mouse"></i> IMPOSTAZIONI MOUSE
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2023/02/apex-section-bg-settings-mouse.jpg" alt="Impostazioni mouse Apex Legends">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-bullseye"></i> SENSIBILITÀ E PRECISIONE</h3>
+                <p>Trova la sensibilità perfetta per il tuo stile di gioco in Apex Legends. Una configurazione ottimale del mouse è essenziale per mirare con precisione.</p>
+                
+                <div class="recommended">
+                    <p class="recommended-title">
+                        <i class="fas fa-trophy"></i> CONFIGURAZIONE:
+                    </p>
+                    <ul>
+                        <li><strong>DPI:</strong> 800-1600</li>
+                        <li><strong>Sensibilità:</strong> 0,98-1,87</li>
+                        <li><strong>Sensibilità Mirino:</strong> 1.0</li>
+                        <li><strong>ADS Sensitivity:</strong> 1.0</li>
+                        <li><strong>Raw Input:</strong> Abilitato</li>
+                        <li><strong>Accelerazione Mouse:</strong> Disabilitata</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> DPI tra 800-1600 offre il miglior controllo</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> Sensibilità tra 1-2.0 per equilibrio precisione/agilità</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sezione Controller -->
+    <section class="settings-section">
+        <h2 class="section-title">
+            <i class="fas fa-gamepad"></i> IMPOSTAZIONI CONTROLLER
+        </h2>
+        <div class="settings-grid">
+            <div class="screenshot-container">
+                <img src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2023/02/apex-section-bg-settings-controller.jpg" alt="Impostazioni controller Apex Legends">
+            </div>
+            <div class="settings-desc">
+                <h3><i class="fas fa-joystick"></i> CONFIGURAZIONE CONTROLLER</h3>
+                <p>Ottimizza le impostazioni del controller per dominare in Apex Legends. Trova la sensibilità perfetta per il tuo stile di gioco.</p>
+                
+                <div class="recommended">
+                    <p class="recommended-title">
+                        <i class="fas fa-check-circle"></i> IMPOSTAZIONI CONSIGLIATE:
+                    </p>
+                    <ul>
+                        <li><strong>Layout Pulsanti:</strong> Evolved</li>
+                        <li><strong>Sensibilità Verticale:</strong> 4-6</li>
+                        <li><strong>Sensibilità Orizzontale:</strong> 4-6</li>
+                        <li><strong>ADS Sensibilità:</strong> 3-5</li>
+                        <li><strong>Deadzone:</strong> Nessuna</li>
+                        <li><strong>Risposta Curva:</strong> Lineare</li>
+                        <li><strong>Aim Assist:</strong> Abilitato</li>
+                        <li class="detail"><i class="fas fa-info-circle"></i> Layout Evolved ottimizza i pulsanti per movimento avanzato</li>
+                    </ul>
+                </div>
+                
+                <div class="recommended" style="margin-top: 2rem;">
+                    <p class="recommended-title">
+                        <i class="fas fa-user-ninja"></i> SENSIBILITÀ PRO PLAYER:
+                    </p>
+                    <div class="sensitivity-buttons">
+                        <div class="sensitivity-card">
+                            <span class="legend-name">GENBURTEN</span>
+                            <span class="sensitivity-hint">4-3 Lineare (No Deadzone)</span>
+                        </div>
+                        <div class="sensitivity-card">
+                            <span class="legend-name">NICEWIGG</span>
+                            <span class="sensitivity-hint">4-4 Classica (Piccola Deadzone)</span>
+                        </div>
+                        <div class="sensitivity-card">
+                            <span class="legend-name">SNIP3DOWN</span>
+                            <span class="sensitivity-hint">5-5 Classica (Media Deadzone)</span>
+                        </div>
+                        <div class="sensitivity-card">
+                            <span class="legend-name">ITEMP</span>
+                            <span class="sensitivity-hint">6-4 Lineare (No Deadzone)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>APEX LEGENDS TACTICS</h3>
+            <p>La guida definitiva alle impostazioni ottimali per Apex Legends</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitch"></i></a>
+            </div>
+            <p class="copyright">© 2023 Apex Legends Settings Guide. Non affiliato con Respawn Entertainment.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Preset configurazioni
+        const presets = {
+            display: {
+                performance: {
+                    resolution: "1568x1080(4:3)",
+                    fov: "107",
+                    vsync: "Disabilitato",
+                    details: [
+                        "Priorità massima FPS",
+                        "Miglior tempo di risposta",
+                        "Ideale per competitivo"
+                    ]
+                },
+                balanced: {
+                    resolution: "1600x1080 (3:2)",
+                    fov: "106",
+                    vsync: "Disabilitato",
+                    details: [
+                        "Bilancio FPS/Qualità",
+                        "Visibilità migliorata",
+                        "Ottimo per tutti"
+                    ]
+                },
+                quality: {
+                    resolution: "1920x1080 (16:9)",
+                    fov: "110",
+                    vsync: "Disabilitato",
+                    details: [
+                        "Grafica premium",
+                        "Dettagli massimi",
+                        "Per hardware potente"
+                    ]
+                }
+            },
+            graphics: {
+                performance: {
+                    textures: "Basso",
+                    shadows: "Disabilitate",
+                    reflections: "Disabilitato",
+                    aa: "TSAA",
+                    lod: "Alto",
+                    ambient: "Disabilitato",
+                    effects: "Disabilitato",
+                    details: [
+                        "Modelli Alto per visibilità",
+                        "Tutto il resto al minimo",
+                        "Migliori FPS competitivi"
+                    ]
+                },
+                balanced: {
+                    textures: "Medio",
+                    shadows: "Medio",
+                    reflections: "Basso",
+                    aa: "TSAA",
+                    lod: "Alto",
+                    ambient: "Disabilitato",
+                    effects: "Basso",
+                    details: [
+                        "Bilanciato FPS/qualità",
+                        "Ombre Medio per dettagli",
+                        "Configurazione versatile"
+                    ]
+                },
+                quality: {
+                    textures: "Alto",
+                    shadows: "Alto",
+                    reflections: "Medio",
+                    aa: "TSAA Ultra",
+                    lod: "Alto",
+                    ambient: "Abilitato",
+                    effects: "Alto",
+                    details: [
+                        "Grafica premium",
+                        "Ombre Alto dettagliate",
+                        "Per hardware potente"
+                    ]
+                }
+            }
+        };
+
+        // Funzione per selezionare i preset
+        function selectPreset(section, preset) {
+            // Animazione click
+            event.currentTarget.style.animation = "pulse 0.3s ease";
+            setTimeout(() => {
+                event.currentTarget.style.animation = "";
+            }, 300);
+            
+            // Aggiorna lo stato attivo delle card
+            const container = document.querySelector(`#${section}-section .preset-options`);
+            container.querySelectorAll('.preset-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Aggiorna le impostazioni visualizzate
+            updateSettings(section, preset);
+        }
+
+        // Funzione per aggiornare le impostazioni visualizzate
+        function updateSettings(section, preset) {
+            const settings = presets[section][preset];
+            const settingsList = document.getElementById(`${section}-settings`);
+            
+            if(section === 'display') {
+                settingsList.innerHTML = `
+                    <li><strong>Modalità Schermo:</strong> Fullscreen</li>
+                    <li><strong>Risoluzione:</strong> ${settings.resolution}</li>
+                    <li><strong>Refresh Rate:</strong> Massimo disponibile</li>
+                    <li><strong>VSync:</strong> ${settings.vsync}</li>
+                    <li><strong>FOV:</strong> ${settings.fov}</li>
+                    ${settings.details.map(detail => `<li class="detail"><i class="fas fa-info-circle"></i> ${detail}</li>`).join('')}
+                `;
+            } else {
+                settingsList.innerHTML = `
+                    <li><strong>Qualità Texture:</strong> ${settings.textures}</li>
+                    <li><strong>Filtro Texture:</strong> ${preset === 'performance' ? 'Lineare' : 'Anisotropico 4x'}</li>
+                    <li><strong>Dettagli Modelli:</strong> ${settings.lod}</li>
+                    <li><strong>Ombre:</strong> ${settings.shadows}</li>
+                    <li><strong>Riflessi:</strong> ${settings.reflections}</li>
+                    <li><strong>Occlusione Ambientale:</strong> ${settings.ambient}</li>
+                    <li><strong>Anti-Aliasing:</strong> ${settings.aa}</li>
+                    <li><strong>Effetti Luminosi:</strong> ${settings.effects}</li>
+                    ${settings.details.map(detail => `<li class="detail"><i class="fas fa-info-circle"></i> ${detail}</li>`).join('')}
+                `;
+            }
+        }
+
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inizializza i preset
+            updateSettings('display', 'performance');
+            updateSettings('graphics', 'performance');
+            
+            // Aggiungi animazioni agli elementi
+            const sections = document.querySelectorAll('.settings-section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 100 + (index * 100));
+            });
+        });
+    </script>
+</body>
+</html>
